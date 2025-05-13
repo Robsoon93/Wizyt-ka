@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizytówka: ZawieziemyCię.wszędzie (No, Prawie)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #e0e0e0; /* Slightly darker background to see cards */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card-container {
+            width: 350px; /* Standard business card width (approx 3.5in * 100px/in) */
+            height: 200px; /* Standard business card height (approx 2in * 100px/in) */
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px; /* Rounded corners for elements */
+            overflow: hidden; /* Ensures content respects border radius */
+        }
+
+        /* Strona Awers */
+        .card-front {
+            background-color: #FFFFFF; /* Białe tło */
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative; /* For cartographic grid */
+        }
+
+        .cartographic-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(#EAEAEA 0 0.5px, transparent 0.5px 100%),
+                repeating-linear-gradient(90deg, #EAEAEA 0 0.5px, transparent 0.5px 100%);
+            background-size: 15px 15px; /* Size of the grid squares */
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        .card-front .company-name-main {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; /* Bold */
+            font-size: 24px;
+            color: #333333; /* Ciemnoszary */
+            margin: 0;
+            z-index: 1;
+        }
+
+        .card-front .company-name-sub {
+            font-family: 'Caveat', cursive;
+            font-size: 20px;
+            color: #1ABC9C; /* Turkusowy */
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .card-front .car-icon {
+            width: 30px;
+            height: 20px;
+            margin-left: 8px;
+            fill: #1ABC9C; /* Turkusowy */
+            z-index: 1;
+        }
+
+        /* Strona Rewers */
+        .card-back {
+            background-color: #F0F0F0; /* Jasnoszare tło */
+            width: 100%;
+            height: 100%;
+            padding: 15px 20px; /* Adjusted padding */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes slogan to bottom */
+        }
+
+        .contact-info {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; /* Slightly smaller for more info */
+            color: #333333; /* Ciemnoszary */
+        }
+
+        .contact-info .name {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info .phone {
+            font-weight: 700; /* More prominent phone */
+            font-size: 12px;
+        }
+
+        .contact-info svg { /* Dotyczy ikonek kontaktu, nie QR kodu */
+            width: 14px;
+            height: 14px;
+            fill: #1ABC9C; /* Turkusowy */
+            margin-right: 8px;
+        }
+
+        .slogan {
+            font-family: 'Montserrat', sans-serif;
+            font-style: italic; /* Or regular, as preferred */
+            font-size: 10px;
+            color: #333333; /* Ciemnoszary */
+            text-align: center;
+            margin-top: 10px; /* Space above slogan */
+        }
+        
+        .qr-code-image { 
+            width: 40px; 
+            height: 40px;
+            object-fit: contain; 
+            margin-top: 5px;
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+
+        .contact-details-group {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; /* Wyrównuje elementy (tekst i QR) do góry */
+            flex-grow: 1; 
+        }
+        
+        .contact-text-details { 
+            flex-grow: 1; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card-front">
+            <div class="cartographic-grid"></div>
+            <h1 class="company-name-main">ZawieziemyCię.wszędzie</h1>
+            <div class="company-name-sub">
+                <span>(No, Prawie)</span>
+                <svg class="car-icon" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 40 Q0 40 0 35 V25 Q0 20 5 20 H15 L25 10 H75 L85 20 H95 Q100 20 100 25 V35 Q100 40 95 40 H88"/>
+                    <path d="M12 40 V45 Q12 55 22 55 Q32 55 32 45 V40"/>
+                    <path d="M68 40 V45 Q68 55 78 55 Q88 55 88 45 V40"/>
+                    <rect x="30" y="22" width="40" height="18" rx="3" ry="3" fill="#FFF" stroke="#1ABC9C" stroke-width="2"/>
+                    <line x1="70" y1="10" x2="75" y2="0" stroke="#1ABC9C" stroke-width="3" transform="rotate(15 70 10)"/>
+                    <path d="M40 32 Q50 38 60 32" stroke="#1ABC9C" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card-back">
+            <div class="contact-details-group">
+                <div class="contact-text-details"> 
+                    <div class="contact-info">
+                        <p class="name">Zawieziemy Cię Wszędzie</p>
+                        <p class="phone">
+                            <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+                            +49 178 2721665
+                        </p>
+                        <p>
+                            <svg viewBox="0 0 24 24"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/></svg>
+                            zawieziemy.cie.wszedzie.no.prawie@gmail.com
+                        </p>
+                        <p>
+                            <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M18.5,15.1C17.2,16.9 15.2,18 13,18C12.2,18 11.5,17.9 10.8,17.7L12.3,15.5L12.8,16.5C13.5,16.8 14.2,16.7 14.7,16.2C15.3,15.6 15.3,14.6 14.8,14L12.3,10L13.2,8.5C13.4,8.2 13.5,7.8 13.5,7.5C13.5,6.7 12.8,6 12,6C11.7,6 11.5,6.1 11.2,6.2L10.3,7.5L9.3,6C9.1,5.8 8.9,5.6 8.5,5.6C7.7,5.6 7.1,6.2 7.1,7C7.1,7.4 7.2,7.7 7.5,8L8.8,10.1L7.9,11.7C7.3,12.8 7.7,14.1 8.6,14.8C9.2,15.2 9.8,15.4 10.4,15.4C11.2,15.4 12,15 12.5,14.3L13.1,13.4L14.2,14.6C14.2,14.6 15.9,12.8 15.9,12.8C16.3,12.4 16.8,12.4 17.2,12.8C17.6,13.2 17.6,13.8 17.2,14.2L15.4,16L16.2,17.2C16.7,18 17.7,18.3 18.5,17.9C19.2,17.5 19.5,16.6 19.1,15.8L18.5,15.1Z"/></svg>
+                            <a href="https://www.facebook.com/profile.php?id=61575987490705" target="_blank" style="color: #333333; text-decoration: none;">facebook.com/profile.php?id=61575987490705</a>
+                        </p>
+                    </div>
+                </div>
+                <img src="wizytówka.jpg" alt="Kod QR do kontaktu WhatsApp" class="qr-code-image">
+            </div>
+            <p class="slogan">Twoja ulubiona firma transportowa od zadań (prawie) specjalnych!</p>
+        </div>
+    </div>
+
+</body>
+</html>
